@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Data</title>
+</head>
+<body>
+    <h1>Patient Data</h1>
+    <table>
+        <tr><th>Name</th><td>{{ name }}</td></tr>
+        <tr><th>Age</th><td>{{ age }}</td></tr>
+        <tr><th>Symptoms</th><td>{{ symptoms|join:", " }}</td></tr>
+    </table>
+    
+    <h2>Matched Diseases</h2>
+    <table>
+        <tr><th>Disease</th></tr>
+        {% for disease in matched_diseases %}
+        <tr><td>{{ disease }}</td></tr>
+        {% empty %}
+        <tr><td>No matching diseases found.</td></tr>
+        {% endfor %}
+    </table>
+    
+    <a href="{% url 'patient_data' %}">Enter another patient</a>
+</body>
+</html>
